@@ -1,9 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import News from "./News";
+import "./App.css";
+import "react-calendar/dist/Calendar.css";
 
-function App() {
+const App: React.FunctionComponent = () => {
+  const [value, onChange] = useState(new Date());
+
   return (
     <div className="App">
       <header className="App-header">
@@ -51,8 +56,10 @@ function App() {
           </a>
         </span>
       </header>
+      <Calendar onChange={onChange} value={value} />
+      <News />
     </div>
   );
-}
+};
 
 export default App;
